@@ -18,6 +18,16 @@ export const GlobalStyle = createGlobalStyle`
   body {
     padding: 0 130px;
   }
+  
+  a { 
+    text-decoration: none;
+    
+    &:active,
+    &:link,
+    &:visited {
+      color: #fff;
+    }
+  }
 `;
 
 export const Flex = styled.div`
