@@ -3,7 +3,7 @@ import axios from "axios";
 const comicvineURL = "https://comicvine.gamespot.com/api/";
 const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
 const baseURL =
-  process.env.REACT_APP_ENV == "dev"
+  process.env.REACT_APP_ENV === "dev"
     ? corsAnywhere + comicvineURL
     : comicvineURL;
 const api_key = process.env.REACT_APP_KEY;
@@ -26,5 +26,6 @@ export const getData = async (route, queryParams) => {
     return data;
   } catch (error) {
     console.log("error", error);
+    return error;
   }
 };

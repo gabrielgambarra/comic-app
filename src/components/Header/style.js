@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header`
 
 export const AppName = styled(Link)`
   text-decoration: none;
+  font-size: ${(props) => props.theme.fontSizes.medium};
 
   &:active,
   &:link,
