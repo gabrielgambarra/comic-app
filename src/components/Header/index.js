@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { HeaderContainer } from "./style";
+import { AppName, HeaderContainer } from "./style";
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <Link to="/">Comic App</Link>
+      <AppName to="/">Comic App</AppName>
     </HeaderContainer>
   );
 };
