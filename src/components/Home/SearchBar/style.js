@@ -8,6 +8,7 @@ export const SearchBarContainer = styled.div`
   background-color: ${(props) => props.theme.colors.white};
   border-radius: 5px;
   padding: 6px 0;
+  margin-bottom: 1em;
   & svg {
     margin: 0 0.5em;
     width: 1em;
