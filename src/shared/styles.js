@@ -28,6 +28,27 @@ export const GlobalStyle = createGlobalStyle`
       color: #fff;
     }
   }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #adadad;
+    border-radius: 8px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;
 
 export const Flex = styled.div`
@@ -46,4 +67,5 @@ export const AppContent = styled(Flex)`
   flex-direction: column;
   height: 100vh;
   width: 100%;
+  overflow: auto;
 `;
