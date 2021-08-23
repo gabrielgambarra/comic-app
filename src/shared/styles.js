@@ -29,6 +29,16 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  input {
+    outline: none;
+  }
+
+  button {
+    &:active {
+      outline: none;
+    }
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
   }

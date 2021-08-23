@@ -24,12 +24,7 @@ export const Pagination = styled(Flex)`
   & button {
     padding: 0.5em;
     margin: 0 1em;
-    /* border: unset; */
     border-radius: 8px;
     background-color: #fff;
-
-    &:active {
-      outline: none;
-    }
   }
 `;

@@ -4,7 +4,6 @@ export const SearchBarContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  outline: none;
   background-color: ${(props) => props.theme.colors.white};
   border-radius: 5px;
   padding: 6px 0;
@@ -18,14 +17,24 @@ export const SearchBarContainer = styled.div`
       stroke: ${(props) => props.theme.colors.secundary};
     }
   }
-  & input {
-    padding: 5px 5px 5px 0;
-    border: none;
+  & form {
     width: 100%;
-    outline: none;
-    font-size: ${(props) => props.theme.fontSizes.default};
-    &::placeholder {
-      color: ${(props) => props.theme.colors.secundary};
+    padding: 5px 5px 5px 0;
+
+    input {
+      border: none;
+      width: 100%;
+      font-size: ${(props) => props.theme.fontSizes.default};
+      &::placeholder {
+        color: ${(props) => props.theme.colors.secundary};
+      }
     }
   }
+`;
+
+export const RemoveFilter = styled.button`
+  margin-right: 0.5em;
+  border-radius: 8px;
+  background-color: #fff;
+  color: ${(props) => props.theme.colors.dark};
 `;
