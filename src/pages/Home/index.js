@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getData } from "../../api";
-import { HomeContainer, Pagination } from "./style";
+import { HomeContainer } from "./style";
 import SearchBar from "../../components/Home/SearchBar";
 import CharacterGrid from "../../components/CharacterGrid";
 
@@ -89,20 +89,14 @@ const Home = () => {
 
       {characters.length > 0 && (
         <>
-          <CharacterGrid characters={characters} />
-
-          <Pagination>
-            <button onClick={() => goToPrev()} disabled={offset === 0}>
-              Prev
-            </button>
-            {offset + pageLength} of {totalLength}
-            <button
-              onClick={() => goToNext()}
-              disabled={offset === totalLength - 1}
-            >
-              Next
-            </button>
-          </Pagination>
+          <CharacterGrid
+            characters={characters}
+            goToPrev={goToPrev}
+            goToNext={goToNext}
+            offset={offset}
+            totalLength={totalLength}
+            pageLength={pageLength}
+          />
         </>
       )}
     </HomeContainer>
