@@ -8,10 +8,13 @@ const format = "json";
 
 const api = axios.create({
   baseURL,
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+  },
 });
 
 export const getData = async (route, queryParams) => {
-  const paramsObj = { format, api_key, ...queryParams };
+  const paramsObj = { format, api_key, ...queryParams, limit: 5 };
   const params = new URLSearchParams(paramsObj);
 
   const { data } = await api.get(`${route}`, {
