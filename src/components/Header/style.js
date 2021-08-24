@@ -1,19 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
   padding: 0.5em 0;
 `;
 
 export const AppName = styled(Link)`
-  text-decoration: none;
   font-size: ${(props) => props.theme.fontSizes.medium};
 
   &:active,
   &:link,
   &:visited {
     color: #fff;
+  }
+`;
+
+export const HeaderNav = styled(NavLink)`
+  font-size: ${(props) => props.theme.fontSizes.default};
+  margin: 0 0.5em;
+
+  &:active,
+  &:link,
+  &:visited {
+    color: #fff;
+  }
+
+  &:hover {
+    border-bottom: 2px solid #fff;
+  }
+
+  &.active {
+    border-bottom: 2px solid #fff;
   }
 `;
