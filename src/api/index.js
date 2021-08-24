@@ -18,14 +18,9 @@ export const getData = async (route, queryParams) => {
   const paramsObj = { format, api_key, field_list, ...queryParams };
   const params = new URLSearchParams(paramsObj);
 
-  try {
-    const { data } = await api.get(`${route}`, {
-      params: params,
-    });
+  const { data } = await api.get(`${route}`, {
+    params: params,
+  });
 
-    return data;
-  } catch (error) {
-    console.log("error", error);
-    return error;
-  }
+  return data;
 };
