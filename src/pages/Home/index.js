@@ -3,6 +3,7 @@ import { getData } from "../../api";
 import { HomeContainer } from "./style";
 import SearchBar from "../../components/Home/SearchBar";
 import CharacterGrid from "../../components/CharacterGrid";
+import EmptyList from "../../components/EmptyList";
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
@@ -11,7 +12,7 @@ const Home = () => {
   const [totalLength, setTotalLength] = useState(0);
   const [pageLength, setPageLength] = useState(0);
   const [offset, setOffset] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getAPIData();
@@ -41,7 +42,7 @@ const Home = () => {
   const handleSearch = () => {
     setCharacters([]);
     setFilterApplied(true);
-    offset === 0 ? getAPIData() : setOffset(0);
+    offset === 0 ? getAPIData(true) : setOffset(0);
   };
 
   const onRemoveFilter = () => {
@@ -51,17 +52,15 @@ const Home = () => {
     offset === 0 ? getAPIData() : setOffset(0);
   };
 
-  const buildFilterParams = () => {
-    return searchTerm !== "" && filterApplied !== true
-      ? { offset, filter: `name:${searchTerm}` }
-      : { offset };
+  const buildFilterParams = (filter) => {
+    return filter ? { offset, filter: `name:${searchTerm}` } : { offset };
   };
 
-  const getAPIData = async () => {
+  const getAPIData = async (filter) => {
     setIsLoading(true);
     try {
       const { results, number_of_total_results, number_of_page_results } =
-        await getData("/characters", buildFilterParams());
+        await getData("/characters", buildFilterParams(filter));
       setTotalLength(number_of_total_results);
       setPageLength(number_of_page_results);
       setCharacters(results);
@@ -86,6 +85,8 @@ const Home = () => {
       />
 
       {handleLoading()}
+
+      {totalLength < 1 && !isLoading && <EmptyList />}
 
       {characters.length > 0 && (
         <CharacterGrid
