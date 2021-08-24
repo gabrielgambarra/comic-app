@@ -10,9 +10,13 @@ export const FavoriteProvider = ({ children }) => {
     setFavorites(newFavorites);
   };
 
-  const removeFromFavorites = (id) => {
-    const newFavorites = favorites.filter((item) => item.id !== id);
+  const removeFromFavorites = (characterId) => {
+    const newFavorites = favorites.filter((item) => item.id !== characterId);
     setFavorites(newFavorites);
+  };
+
+  const isFavorite = (characterId) => {
+    return favorites.some((item) => item.id === characterId);
   };
 
   return (
@@ -21,6 +25,7 @@ export const FavoriteProvider = ({ children }) => {
         favorites,
         addToFavorites,
         removeFromFavorites,
+        isFavorite,
       }}
     >
       {children}
