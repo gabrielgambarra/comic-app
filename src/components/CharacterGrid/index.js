@@ -9,6 +9,7 @@ const CharacterGrid = ({
   offset,
   totalLength,
   pageLength,
+  pagination,
 }) => {
   return (
     <>
@@ -22,18 +23,20 @@ const CharacterGrid = ({
         ))}
       </CharacterGridContainer>
 
-      <Pagination>
-        <button onClick={() => goToPrev()} disabled={offset === 0}>
-          Prev
-        </button>
-        {offset + pageLength} of {totalLength}
-        <button
-          onClick={() => goToNext()}
-          disabled={offset === totalLength - 1}
-        >
-          Next
-        </button>
-      </Pagination>
+      {pagination && (
+        <Pagination>
+          <button onClick={() => goToPrev()} disabled={offset === 0}>
+            Prev
+          </button>
+          {offset + pageLength} of {totalLength}
+          <button
+            onClick={() => goToNext()}
+            disabled={offset === totalLength - 1}
+          >
+            Next
+          </button>
+        </Pagination>
+      )}
     </>
   );
 };
