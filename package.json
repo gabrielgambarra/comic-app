@@ -16,7 +16,6 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start-dev": "cross-env REACT_APP_ENV=dev REACT_APP_KEY=fa24c940e597bb309fbe20b554fe38aed3efea70 react-scripts start",
     "start": "cross-env REACT_APP_KEY=\"fa24c940e597bb309fbe20b554fe38aed3efea70\" react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
