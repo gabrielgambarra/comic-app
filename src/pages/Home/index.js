@@ -88,16 +88,15 @@ const Home = () => {
       {handleLoading()}
 
       {characters.length > 0 && (
-        <>
-          <CharacterGrid
-            characters={characters}
-            goToPrev={goToPrev}
-            goToNext={goToNext}
-            offset={offset}
-            totalLength={totalLength}
-            pageLength={pageLength}
-          />
-        </>
+        <CharacterGrid
+          characters={characters}
+          goToPrev={goToPrev}
+          goToNext={goToNext}
+          offset={offset}
+          totalLength={totalLength}
+          pageLength={pageLength}
+          pagination={true}
+        />
       )}
     </HomeContainer>
   );
