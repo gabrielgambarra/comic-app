@@ -8,7 +8,6 @@ const Favorite = () => {
 
   return (
     <FavoriteContainer>
-      Favorites
       {favorites.length > 0 && (
         <CharacterGrid characters={favorites} pagination={false} />
       )}
