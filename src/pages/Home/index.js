@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getData } from "../../api";
-import CharacterCard from "../../components/Home/CharacterCard";
-import { HomeContainer, CharacterGrid, Pagination } from "./style";
+import { HomeContainer, Pagination } from "./style";
 import SearchBar from "../../components/Home/SearchBar";
+import CharacterGrid from "../../components/CharacterGrid";
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
@@ -89,15 +89,7 @@ const Home = () => {
 
       {characters.length > 0 && (
         <>
-          <CharacterGrid>
-            {characters.map((char) => (
-              <CharacterCard
-                key={char.id}
-                character={char}
-                to={`/details/${char.id}`}
-              />
-            ))}
-          </CharacterGrid>
+          <CharacterGrid characters={characters} />
 
           <Pagination>
             <button onClick={() => goToPrev()} disabled={offset === 0}>
