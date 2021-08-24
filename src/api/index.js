@@ -15,7 +15,7 @@ const api = axios.create({
 });
 
 export const getData = async (route, queryParams) => {
-  const paramsObj = { format, api_key, field_list, ...queryParams };
+  const paramsObj = { format, api_key, ...queryParams };
   const params = new URLSearchParams(paramsObj);
 
   const { data } = await api.get(`${route}`, {

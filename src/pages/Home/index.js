@@ -53,7 +53,9 @@ const Home = () => {
   };
 
   const buildFilterParams = (filter) => {
-    return filter ? { offset, filter: `name:${searchTerm}` } : { offset };
+    return filter
+      ? { offset, filter: `name:${searchTerm}`, field_list: "name,image,id" }
+      : { offset, field_list: "name,image,id" };
   };
 
   const getAPIData = async (filter) => {
