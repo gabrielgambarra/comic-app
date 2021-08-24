@@ -1,13 +1,9 @@
 import axios from "axios";
 
 const comicvineURL = "https://comicvine.gamespot.com/api/";
-const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
-const baseURL =
-  process.env.REACT_APP_ENV === "dev"
-    ? corsAnywhere + comicvineURL
-    : comicvineURL;
+const corsUrl = "http://localhost:8010/proxy/";
+const baseURL = process.env.REACT_APP_ENV === "dev" ? corsUrl : comicvineURL;
 const api_key = process.env.REACT_APP_KEY;
-const field_list = "name,gender,real_name,aliases,birth,image,id,deck";
 const format = "json";
 
 const api = axios.create({

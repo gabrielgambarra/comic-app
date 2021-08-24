@@ -3,6 +3,6 @@ import { Flex } from "../../shared/styles";
 
 export const FavoriteContainer = styled(Flex)`
   flex-direction: column;
-  width: 100%;
-  overflow: hidden;
+  padding: 0 130px;
+  overflow: auto;
 `;

@@ -88,7 +88,9 @@ const Home = () => {
 
       {handleLoading()}
 
-      {totalLength < 1 && !isLoading && <EmptyList />}
+      {totalLength < 1 && !isLoading && (
+        <EmptyList notFound={filterApplied && totalLength < 1} />
+      )}
 
       {characters.length > 0 && (
         <CharacterGrid

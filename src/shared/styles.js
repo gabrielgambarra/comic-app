@@ -15,9 +15,6 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${(props) => props.theme.fontSizes.default};
     background-color: ${(props) => props.theme.colors.dark};
   }
-  body {
-    padding: 0 130px;
-  }
   
   a { 
     text-decoration: none;
