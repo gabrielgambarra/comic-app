@@ -12,8 +12,10 @@ import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 import { Flex } from "../../shared/styles";
 import EditInput from "../../components/EditInput";
+import { useEdit } from "../../hooks/useEdit";
 
 const gender = {
+  0: "Other",
   1: "Male",
   2: "Female",
 };
@@ -29,6 +31,7 @@ const Details = ({ match }) => {
   const [newAliases, setNewAliases] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [edit, setEdit] = useState(false);
+  const { saveEdit, isEdited, getEditedCharacter } = useEdit();
 
   useEffect(() => {
     getCharacterDetails();
@@ -54,8 +57,36 @@ const Details = ({ match }) => {
     setNewDescription("");
   };
 
+  const buildObjToSaveEdit = () => {
+    const characterEdited = {
+      ...character,
+      name: newName,
+      real_name: newRealName,
+      birth: newBirth,
+      gender: newGender,
+      aliases: newAliases,
+      deck: newDescription,
+    };
+
+    saveEdit(characterEdited);
+    setCharacter(characterEdited);
+    setEdit(false);
+  };
+
   const getCharacterDetails = async () => {
     setIsLoading(true);
+    const urlId = parseInt(match.params.id);
+    if (isEdited(urlId)) {
+      const characterData = getEditedCharacter(urlId);
+      setTotalLength(1);
+      setCharacter(characterData);
+    } else {
+      await getAPIData();
+    }
+    setIsLoading(false);
+  };
+
+  const getAPIData = async () => {
     try {
       const { results, number_of_page_results } = await getData("/characters", {
         filter: `id:${match.params.id}`,
@@ -65,12 +96,12 @@ const Details = ({ match }) => {
       setTotalLength(number_of_page_results);
 
       if (number_of_page_results === 1) {
+        results[0].aliases = results[0].aliases.replace(/\n/g, " ");
         setCharacter(results[0]);
       }
     } catch (error) {
       console.log(error);
     }
-    setIsLoading(false);
   };
 
   const handleLoading = () => {
@@ -120,7 +151,7 @@ const Details = ({ match }) => {
                   {edit ? (
                     <EditInput onChange={setNewGender} value={newGender} />
                   ) : (
-                    <p>{gender[character.gender] || "Other"}</p>
+                    <p>{gender[character.gender] || character.gender}</p>
                   )}
                 </InfoBlock>
               </InfoGrid>
@@ -156,7 +187,7 @@ const Details = ({ match }) => {
           <EditButtonsContainer>
             {edit ? (
               <div>
-                <button>Save</button>
+                <button onClick={() => buildObjToSaveEdit()}>Save</button>
                 <button onClick={() => cancelEdit()}>Cancel</button>
               </div>
             ) : (

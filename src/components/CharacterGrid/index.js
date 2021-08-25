@@ -1,4 +1,5 @@
 import React from "react";
+import { useEdit } from "../../hooks/useEdit";
 import CharacterCard from "../CharacterCard";
 import { CharacterGridContainer, Pagination } from "./style";
 
@@ -11,13 +12,14 @@ const CharacterGrid = ({
   pageLength,
   pagination,
 }) => {
+  const { isEdited, getEditedCharacter } = useEdit();
   return (
     <>
       <CharacterGridContainer>
         {characters.map((char) => (
           <CharacterCard
             key={char.id}
-            character={char}
+            character={isEdited(char.id) ? getEditedCharacter(char.id) : char}
             to={`/details/${char.id}`}
           />
         ))}

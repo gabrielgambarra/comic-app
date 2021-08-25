@@ -34,7 +34,7 @@ export const EditButtonsContainer = styled(Flex)`
 
   & button {
     padding: 0.5em;
-    margin: 0 1em;
+    margin: 0 1em 0 0;
     border-radius: 8px;
     background-color: #fff;
   }
