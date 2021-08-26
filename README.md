@@ -39,6 +39,6 @@ Your app is ready to be deployed!
 
 O tempo dado para o desenvolvimento do desafio é perfeito, porém, eu não pude utilizá-lo na sua totatilidade. Com isso, tomei algumas decisões:
 
-- Utilizei o Context API ao invés do Redux, por ter mais familiaridade e conseguir desenvolver o teste.
+- Utilizei o Context API ao invés do Redux, por ter mais familiaridade e conseguir desenvolver o desafio.
 - Como dito na entrevista técnica, o meu contato com testes se resumia em ter aberto o site do jest e dado uma olhada. Para não prejudicar o desenvolvimento do resto do desafio, não impletei os testes.
-- A melhor forma de superar o problema de CORS que a lib estava gerando seria eu mesmo criar uma mini API com CORS e disponibilizar isso para que o front acessasse as informações sem problema. Mas preferi utilizar algo pronto que é CORS Anywhere. O serviço está no heroku, então se demorar um pouco mais o primeiro load, deve ser o server startando lá.
+- A melhor forma de superar o problema de CORS que a lib estava gerando seria eu mesmo criar uma mini API com CORS e disponibilizar isso para que o front acessasse as informações sem problema. Mas preferi utilizar algo pronto que é CORS Anywhere. O serviço está no heroku, então se demorar um pouco mais no primeiro load, deve ser o server startando lá.
